@@ -1,4 +1,3 @@
-using GameStore.API.Dtos;
 using GameStore.API.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);

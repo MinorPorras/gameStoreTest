@@ -1,5 +1,4 @@
-using System;
-using System.ComponentModel.DataAnnotations;
+using MiniValidation;
 
 namespace GameStore.API.Filters;
 
@@ -12,13 +11,9 @@ public class ValidationFilter<T> : IEndpointFilter where T : class
             return Results.BadRequest("Invalid request payload.");
         }
 
-        var validationContext = new ValidationContext(dto);
-        var validationResults = new List<ValidationResult>();
-        var isValid = Validator.TryValidateObject(dto, validationContext, validationResults, true);
-
-        if (!isValid)
+        if(!MiniValidator.TryValidate(dto, out var errors))
         {
-            return Results.BadRequest(validationResults);
+            return Results.BadRequest(errors);
         }
 
         return await next(context);   

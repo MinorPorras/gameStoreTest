@@ -1,7 +1,5 @@
-using System;
-using System.ComponentModel.DataAnnotations;
 using GameStore.API.Dtos;
-using GameStore.API.Filters;
+using GameStore.API.Extensions;
 
 namespace GameStore.API.Endpoints;
 
@@ -45,7 +43,7 @@ public static class GamesEndpoints
             );
             games.Add(game);
             return Results.CreatedAtRoute(GET_GAME_BY_ID_ROUTE_NAME, new { id = game.ID }, game);
-        }).AddEndpointFilter<ValidationFilter<CreateGameDTO>>();
+        }).WithValidation<CreateGameDTO>();
 
         // PUT /games/{id}
         group.MapPut(GET_GAME_BY_ID_ROUTE, (int id, UpdateGameDTO updatedGame) =>
@@ -63,7 +61,7 @@ public static class GamesEndpoints
                 updatedGame.ReleaseDate ?? default
             );
             return Results.NoContent();
-        }).AddEndpointFilter<ValidationFilter<UpdateGameDTO>>();
+        }).WithValidation<UpdateGameDTO>();
 
         // DELETE /games/{id}
         group.MapDelete(GET_GAME_BY_ID_ROUTE, (int id) =>
