@@ -1,0 +1,52 @@
+GET http://localhost:5122
+
+###
+GET http://localhost:5122/games
+
+###
+GET http://localhost:5122/games/1
+
+###
+POST http://localhost:5122/games
+Content-Type: application/json
+
+{
+  "title": "Halo Infinite",
+  "genre": "Shooter",
+  "price": 59.99,
+  "releaseDate": "2021-12-08"
+}
+
+###
+POST http://localhost:5122/games
+Content-Type: application/json
+
+{
+  "genre": "Shooter",
+  "price": 59.99,
+  "releaseDate": "2021-12-08"
+}
+
+###
+PUT http://localhost:5122/games/1
+Content-Type: application/json
+
+{
+    "title": "The Legend of Zelda: Breath of the Wild Switch 2 Edition",
+    "genre": "Action-Adventure",
+    "price": 79.99,
+    "releaseDate": "2025-08-12"
+}
+
+###
+PUT http://localhost:5122/games/1
+Content-Type: application/json
+
+{
+    "title": "The Legend of Zelda: Breath of the Wild Switch 2 Edition",
+    "price": -1,
+    "releaseDate": "2025-08-12"
+}
+
+###
+DELETE http://localhost:5122/games/2
