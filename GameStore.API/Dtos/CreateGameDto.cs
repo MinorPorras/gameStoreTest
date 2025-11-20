@@ -4,11 +4,11 @@ namespace GameStore.API.Dtos;
 
 public record class CreateGameDTO(
     [property: Required(ErrorMessage = "El título es obligatorio.")]
-    [property: StringLength(50)]
+    [property: StringLength(80, ErrorMessage = "El título no puede exceder los 50 caracteres.")]
     string Title,
 
     [property: Required(ErrorMessage = "El género es obligatorio.")]
-    [property: StringLength(20)]
+    [property: StringLength(20, ErrorMessage = "El género no puede exceder los 20 caracteres.")]
     string Genre,
 
     [property: Range(0.01, double.MaxValue, ErrorMessage = "El precio debe ser mayor que cero.")]
