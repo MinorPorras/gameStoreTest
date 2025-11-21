@@ -16,7 +16,7 @@ public static class GamesEndpoints
         new(5, "The Witcher 3: Wild Hunt", "RPG", 29.99m, new DateOnly(2015, 5, 19))
     ];
 
-    public static RouteGroupBuilder mapGamesEndpoints(this WebApplication app)
+    public static RouteGroupBuilder MapGamesEndpoints(this WebApplication app)
     {
 
         var group = app.MapGroup("games");
