@@ -3,6 +3,7 @@ using System;
 using GameStore.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GameStore.API.Data.Migrations
 {
     [DbContext(typeof(GameStoreContext))]
-    partial class GameStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20251124215741_seedingBaseData")]
+    partial class seedingBaseData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,7 +59,7 @@ namespace GameStore.API.Data.Migrations
                             GenreId = 2,
                             Name = "The Legend of Zelda: Breath of the Wild",
                             Price = 59.99m,
-                            ReleaseDate = new DateOnly(2017, 3, 3)
+                            ReleaseDate = new DateOnly(1, 1, 1)
                         },
                         new
                         {
@@ -64,7 +67,7 @@ namespace GameStore.API.Data.Migrations
                             GenreId = 1,
                             Name = "God of War",
                             Price = 59.99m,
-                            ReleaseDate = new DateOnly(2018, 4, 20)
+                            ReleaseDate = new DateOnly(1, 1, 1)
                         },
                         new
                         {
@@ -72,7 +75,7 @@ namespace GameStore.API.Data.Migrations
                             GenreId = 3,
                             Name = "The Witcher 3: Wild Hunt",
                             Price = 39.99m,
-                            ReleaseDate = new DateOnly(2015, 5, 19)
+                            ReleaseDate = new DateOnly(1, 1, 1)
                         },
                         new
                         {
@@ -80,7 +83,7 @@ namespace GameStore.API.Data.Migrations
                             GenreId = 4,
                             Name = "Microsoft Flight Simulator",
                             Price = 49.99m,
-                            ReleaseDate = new DateOnly(2020, 8, 18)
+                            ReleaseDate = new DateOnly(1, 1, 1)
                         },
                         new
                         {
@@ -88,7 +91,7 @@ namespace GameStore.API.Data.Migrations
                             GenreId = 5,
                             Name = "FIFA 22",
                             Price = 59.99m,
-                            ReleaseDate = new DateOnly(2021, 10, 1)
+                            ReleaseDate = new DateOnly(1, 1, 1)
                         });
                 });
 
