@@ -1,7 +1,9 @@
+using AutoMapper;
 using GameStore.API.Data;
 using GameStore.API.Dtos;
 using GameStore.API.Entities;
 using GameStore.API.Extensions;
+using GameStore.API.Mapping;
 
 namespace GameStore.API.Endpoints;
 
@@ -34,20 +36,27 @@ public static class GamesEndpoints
         }).WithName(GET_GAME_BY_ID_ROUTE_NAME);
 
         // POST /games
-        group.MapPost("/", (CreateGameDTO newGame, GameStoreContext dbContext) =>
+/*         group.MapPost("/", (CreateGameDTO newGame, GameStoreContext dbContext) =>
         {
-            Game game = new()
-            {
-                Name = newGame.Title,
-                GenreId = dbContext.Genres.FirstOrDefault(g => g.Name == newGame.Genre)?.Id ?? 0,
-                Price = newGame.Price ?? 0,
-                ReleaseDate = newGame.ReleaseDate ?? default
-            };
+            Game game = newGame.ToEntity();
+            game.Genre = dbContext.Genres.FirstOrDefault(g => g.Id == newGame.GenreId);
 
             dbContext.Games.Add(game);
             dbContext.SaveChanges();
 
-            return Results.CreatedAtRoute(GET_GAME_BY_ID_ROUTE_NAME, new { id = game.Id }, game);
+            return Results.CreatedAtRoute(GET_GAME_BY_ID_ROUTE_NAME, new { id = game.Id }, game.ToDto());
+        }).WithValidation<CreateGameDTO>(); */
+
+                // POST /games
+        group.MapPost("/", (CreateGameDTO newGame, GameStoreContext dbContext, IMapper mapper) =>
+        {
+            Game game = mapper.Map<Game>(newGame);
+            game.Genre = dbContext.Genres.FirstOrDefault(g => g.Id == newGame.GenreId);
+
+            dbContext.Games.Add(game);
+            dbContext.SaveChanges();
+
+            return Results.CreatedAtRoute(GET_GAME_BY_ID_ROUTE_NAME, new { id = game.Id }, mapper.Map<GameDto>(game));
         }).WithValidation<CreateGameDTO>();
 
         // PUT /games/{id}
@@ -60,7 +69,7 @@ public static class GamesEndpoints
             }
             games[index] = new GameDto(
                 id,
-                updatedGame.Title,
+                updatedGame.Name,
                 updatedGame.Genre,
                 updatedGame.Price ?? 0,
                 updatedGame.ReleaseDate ?? default

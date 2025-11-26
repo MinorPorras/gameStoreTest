@@ -8,6 +8,8 @@ var connectionString = builder.Configuration.GetConnectionString("GameStoreDB")
 
 builder.Services.AddNpgsql<GameStoreContext>(connectionString);
 
+builder.Services.AddAutoMapper(act => {}, typeof(Program));
+
 var app = builder.Build();
 
 app.MapGamesEndpoints();

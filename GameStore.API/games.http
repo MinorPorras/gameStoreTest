@@ -11,10 +11,10 @@ POST http://localhost:5122/games
 Content-Type: application/json
 
 {
-  "title": "Halo Infinite",
-  "genre": "Shooter",
+  "title": "Call of Duty: Vanguard",
+  "genreId": 3,
   "price": 59.99,
-  "releaseDate": "2021-12-08"
+  "releaseDate": "2021-11-05"
 }
 
 ###

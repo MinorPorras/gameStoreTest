@@ -5,7 +5,7 @@ namespace GameStore.API.Dtos;
 public record class UpdateGameDTO(
     [property: Required(ErrorMessage = "El título es obligatorio.")]
     [property: StringLength(50)]
-    string Title,
+    string Name,
 
     [property: Required(ErrorMessage = "El género es obligatorio.")]
     [property: StringLength(20)]
