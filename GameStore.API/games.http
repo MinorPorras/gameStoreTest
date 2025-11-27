@@ -50,3 +50,6 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:5122/games/10
+
+###
+GET http://localhost:5122/games/genre/1

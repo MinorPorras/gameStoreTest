@@ -12,6 +12,7 @@ namespace GameStore.API.Endpoints;
 public static class GamesEndpoints
 {
     const string GET_GAME_BY_ID_ROUTE = "/{id}";
+    const string GET_GAME_BY_GENRE_ID_ROUTE = "/genre/{genreId}";
     const string GET_GAME_BY_ID_ROUTE_NAME = "GetGameById";
 
     public static RouteGroupBuilder MapGamesEndpoints(this WebApplication app)
@@ -35,6 +36,20 @@ public static class GamesEndpoints
             Game? game = await dbContext.Games.FindAsync(id);
             return game == null ? Results.NotFound() : Results.Ok(game?.ToGameDetailsDto());
         }).WithName(GET_GAME_BY_ID_ROUTE_NAME);
+
+        // GET /games/genre/{genreId}
+        group.MapGet(GET_GAME_BY_GENRE_ID_ROUTE, async (int genreId, GameStoreContext dbContext) =>
+        {
+            var games = await dbContext.Games
+                .Include(g => g.Genre)
+                .Where(g => g.GenreId == genreId)
+                .OrderBy(g => g.Name)
+                .Select(g => g.ToGameSummaryDto())
+                .AsNoTracking()
+                .ToListAsync();
+
+            return Results.Ok(games);
+        }).WithName("GetGamesByGenreId");
 
         // POST /games
 /*      group.MapPost("/", (CreateGameDTO newGame, GameStoreContext dbContext) =>

@@ -1,13 +1,22 @@
 import './App.css'
+import { GameCatalog } from './components/GameCatalog';
+import { Home } from './components/Home';
 import MainNavBar from './components/mainNavBar'
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+
 
 function App() {
 
   return (
     <>
-      <MainNavBar />
-      <h1>Welcome to Game Store!</h1>
+      <BrowserRouter>
+        <MainNavBar />
 
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/Games' element={<GameCatalog />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
