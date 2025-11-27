@@ -11,10 +11,10 @@ POST http://localhost:5122/games
 Content-Type: application/json
 
 {
-  "title": "Call of Duty: Vanguard",
-  "genreId": 3,
-  "price": 59.99,
-  "releaseDate": "2021-11-05"
+  "Name": "Call of Duty: Vanguard",
+  "GenreId": 3,
+  "Price": 59.99,
+  "ReleaseDate": "2021-11-05"
 }
 
 ###
@@ -22,9 +22,9 @@ POST http://localhost:5122/games
 Content-Type: application/json
 
 {
-  "genre": "Shooter",
-  "price": 59.99,
-  "releaseDate": "2021-12-08"
+  "Genre": "Shooter",
+  "Price": 59.99,
+  "ReleaseDate": "2021-12-08"
 }
 
 ###
@@ -32,10 +32,10 @@ PUT http://localhost:5122/games/1
 Content-Type: application/json
 
 {
-    "title": "The Legend of Zelda: Breath of the Wild Switch 2 Edition",
-    "genre": "Action-Adventure",
-    "price": 79.99,
-    "releaseDate": "2025-08-12"
+    "Name": "The Legend of Zelda: BOTW Switch 2 Edition",
+    "GenreId": 1,
+    "Price": 79.99,
+    "ReleaseDate": "2025-08-12"
 }
 
 ###
@@ -43,10 +43,10 @@ PUT http://localhost:5122/games/1
 Content-Type: application/json
 
 {
-    "title": "The Legend of Zelda: Breath of the Wild Switch 2 Edition",
-    "price": -1,
-    "releaseDate": "2025-08-12"
+    "Name": "The Legend of Zelda: Breath of the Wild Switch 2 Edition",
+    "Price": -1,
+    "ReleaseDate": "2025-08-12"
 }
 
 ###
-DELETE http://localhost:5122/games/2
+DELETE http://localhost:5122/games/10

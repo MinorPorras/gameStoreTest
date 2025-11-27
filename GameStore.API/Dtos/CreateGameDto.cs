@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 namespace GameStore.API.Dtos;
 
 public record class CreateGameDTO(
-    [property: Required(ErrorMessage = "El título es obligatorio.")]
-    [property: StringLength(80, ErrorMessage = "El título no puede exceder los 80 caracteres.")]
+    [property: Required(ErrorMessage = "El  nombre del juego es obligatorio.")]
+    [property: StringLength(80, ErrorMessage = "El  nombre del juego no puede exceder los 80 caracteres.")]
     string Name,
 
     [property: Required(ErrorMessage = "El id género es obligatorio.")]

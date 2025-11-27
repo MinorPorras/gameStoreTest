@@ -1,0 +1,13 @@
+###
+GET http://localhost:5122/genres
+
+###
+GET http://localhost:5122/genres/6
+
+###
+POST http://localhost:5122/genres
+Content-Type: application/json
+
+{
+  "Name": "Shooter"
+}

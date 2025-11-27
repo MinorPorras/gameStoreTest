@@ -13,9 +13,10 @@ builder.Services.AddAutoMapper(act => {}, typeof(Program));
 var app = builder.Build();
 
 app.MapGamesEndpoints();
+app.MapGenreEndpoints();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MigrateDB();
+await app.MigrateDB();
 
 app.Run();
