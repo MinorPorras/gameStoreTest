@@ -1,35 +1,29 @@
-import { useEffect, useState } from "react";
-import type { GenreDto } from "../types/game";
 import { FilterSidebar } from "./filterSidebar";
+import { GameCard } from "./GameCard";
+import useGames from "../hooks/useGames";
+import useGenres from "../hooks/useGenres";
+import { useSelectedGenres } from "../hooks/useSelectedGenres";
 
 export function GameCatalog() {
-  const [genres, setGenres] = useState<GenreDto[]>([]);
+  // State variables
+  const { genres } = useGenres();
+  const { selectedGenres, handleGenreChange } = useSelectedGenres();
+  const { games } = useGames({genres: selectedGenres});
 
-  useEffect(() => {
-    // Fetch genres for filtering
-  }, []);
-
-  useEffect(() => {
-    // Filter games based on selected genres
-  }, [genres]);
-
-  const handleGenreChange = (genre: GenreDto, isChecked: boolean) => {
-    // Handle genre checkbox change
-    if (isChecked) {
-      setGenres((prevGenres) => [...prevGenres, genre]);
-    } else {
-      setGenres((prevGenres) => prevGenres.filter((id) => id !== genre));
-    }
-  };
-
+  console.log("Games:", games);
   return (
     <main>
       <h1>Game List</h1>
-      
-      <FilterSidebar genres={genres} handleGenreChange={handleGenreChange} />
 
-      <section className="game-list">
+      <FilterSidebar genres={genres} handleGenreChange={handleGenreChange} selectedGenres={selectedGenres} />
+
+      <section className="game-list-section">
         <h2>All Games</h2>
+        <div className="game-list-content">
+          {games.map((game) => (
+            <GameCard key={game.Id} game={game} />
+          ))}
+        </div>
       </section>
       {/* Game list content will go here */}
     </main>

@@ -3,10 +3,16 @@ import type { GenreDto } from "../types/game";
 export function FilterSidebar({
   genres,
   handleGenreChange,
+  selectedGenres,
 }: {
   genres: GenreDto[];
   handleGenreChange: (genre: GenreDto, isChecked: boolean) => void;
+  selectedGenres: GenreDto[];
 }) {
+  console.log("Selected Genres:", selectedGenres);
+
+  console.log("Genres:", genres);
+
   return (
     <section className="filter-sidebar">
       <h2 className="filter-sidebar-title">Filter by Genre</h2>
@@ -14,18 +20,19 @@ export function FilterSidebar({
         {genres.length === 0 ? (
           <li>No genres available.</li>
         ) : (
-          genres.map((genre: { Id: number; Name: string }) => (
-            <>
+          genres.map((genre) => (
+            <li key={genre.id}>
               <input
                 type="checkbox"
-                key={genre.Id}
-                id={`genre-${genre.Id}`}
+                id={`genre-${genre.id}`}
                 onChange={(e) => handleGenreChange(genre, e.target.checked)}
-                checked={genres.includes(genre)}
+                checked={selectedGenres.some(
+                  (selectedGenre) => selectedGenre.id === genre.id
+                )}
               />
-              <label htmlFor={`genre-${genre.Id}`}>{genre.Name}</label>
+              <label htmlFor={`genre-${genre.id}`}>{genre.name}</label>
               <br />
-            </>
+            </li>
           ))
         )}
       </ul>

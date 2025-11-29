@@ -29,6 +29,6 @@ export interface UpdateGameDto {
 }
 
 export interface GenreDto{
-    Id: number;
-    Name: string;
+    id: number;
+    name: string;
 }
