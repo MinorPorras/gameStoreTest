@@ -9,7 +9,7 @@ export function useSelectedGenres() {
     if (isChecked) {
       setSelectedGenres((prevGenres) => [...prevGenres, genre]);
     } else {
-      setSelectedGenres((prevGenres) => prevGenres.filter((g) => g.Id !== genre.Id));
+      setSelectedGenres((prevGenres) => prevGenres.filter((g) => g.id !== genre.id));
     }
   };
   

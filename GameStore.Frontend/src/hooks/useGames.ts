@@ -8,7 +8,7 @@ export function useGames({genres}: {genres: GenreDto[]}) {
   
       useEffect(() => {
         // Fetch games based on selected genres
-        GetGamesByGenreIds(genres.map((genre) => genre.Id)).then((fetchedGames) => {
+        GetGamesByGenreIds(genres.map((genre) => genre.id)).then((fetchedGames) => {
           setGames(fetchedGames);
         });
       }, [genres]);
