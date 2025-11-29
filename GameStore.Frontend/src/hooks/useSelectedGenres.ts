@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { GenreDto } from "../types/game";
+import type { GenreDto } from "../dtos/objectsDtos";
 
 export function useSelectedGenres() {
   const [selectedGenres, setSelectedGenres] = useState<GenreDto[]>([]);

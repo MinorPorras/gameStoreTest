@@ -1,4 +1,4 @@
-import type { GenreDto } from "../types/game";
+import type { GenreDto } from "../dtos/objectsDtos";
 
 export function FilterSidebar({
   genres,
@@ -9,10 +9,6 @@ export function FilterSidebar({
   handleGenreChange: (genre: GenreDto, isChecked: boolean) => void;
   selectedGenres: GenreDto[];
 }) {
-  console.log("Selected Genres:", selectedGenres);
-
-  console.log("Genres:", genres);
-
   return (
     <section className="filter-sidebar">
       <h2 className="filter-sidebar-title">Filter by Genre</h2>

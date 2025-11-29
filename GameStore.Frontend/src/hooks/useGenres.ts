@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { GenreDto } from "../types/game";
+import type { GenreDto } from "../dtos/objectsDtos";
 import { getGenres } from "../services/genres";
 
 export function useGenres() {

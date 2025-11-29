@@ -1,13 +1,12 @@
-
-import type { GameSummaryDto } from "../types/game";
+import type { GameSummaryDto } from "../dtos/objectsDtos";
 
 export function GameCard({ game }: { game: GameSummaryDto }) {
   return (
     <div>
-        <h3>{game.Name}</h3>
-        <p>{game.GenreName}</p>
-        <p>${game.Price}</p>
-        <p>Released on {new Date(game.ReleaseDate).toString()}</p>
+      <h3>{game.name}</h3>
+      <p>{game.genreName}</p>
+      <p>${game.price}</p>
+      <p>Released on {new Date(game.releaseDate).toISOString().split("T")[0].replace(/-/g, "/")}</p>
     </div>
   );
 }
