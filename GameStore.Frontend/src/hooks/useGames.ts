@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { GameSummaryDto, GenreDto } from "../dtos/objectsDtos";
+import type { GameSummaryDto, GenreDto } from "../types/objectsDtos";
 import { GetGamesByGenreIds } from "../services/games";
 
 export function useGames({ selectedGenres }: { selectedGenres: GenreDto[] }) {

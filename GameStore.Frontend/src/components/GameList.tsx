@@ -1,5 +1,5 @@
 import useGames from "../hooks/useGames";
-import type { GenreDto } from "../dtos/objectsDtos";
+import type { GenreDto } from "../types/objectsDtos";
 
 export function GameList({ genre }: { genre: GenreDto}) {
 

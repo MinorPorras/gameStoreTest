@@ -10,18 +10,14 @@ export function MainNavBarItem({
   handleItemClick: (item: string) => void;
 }) {
   return (
-    <li
-      className={`main-navbar-item ${selectedItem === text ? "active" : ""}`}
+    <Link
+      to={text === "Home" ? "/" : `/${text}`}
       onClick={() => handleItemClick(text)}
       id={text}
+      className={`main-navbar-item ${selectedItem === text ? "active" : ""}`}
     >
-      <Link
-        to={text === "Home" ? "/" : `/${text}`}
-        className="main-navbar-link"
-      >
-        {text}
-      </Link>
-    </li>
+      {text}
+    </Link>
   );
 }
 

@@ -1,5 +1,5 @@
 import { GAMES_ENDPOINT } from "../constants";
-import type { GameSummaryDto } from "../dtos/objectsDtos";
+import type { GameSummaryDto } from "../types/objectsDtos";
 
 export async function GetGamesByGenreIds(
   genreIds: number[]

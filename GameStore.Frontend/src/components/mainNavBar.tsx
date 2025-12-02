@@ -1,28 +1,27 @@
 import { useState } from "react";
 import { MainNavBarItem } from "./mainNabVarItem";
+import { TABS } from "../constants";
 
 export function MainNavBar() {
-  const [selectedItem, setSelectedItem] = useState("Home");
+  const [selectedNavBarItem, setSelectedNavBarItem] = useState("Home");
 
   const handleItemClick = (item: string) => {
-    setSelectedItem(item);
+    setSelectedNavBarItem(item);
   };
 
-  const tabs: string[] = ["Home", "Games"];
-
   return (
-    <header>
+    <header className="main-navbar-container">
       <nav className="main-navbar">
-        <ul className="main-navbar-list">
-          {tabs.map((tab) => (
+        <div className="main-navbar-list">
+          {TABS.map((tab) => (
             <MainNavBarItem
               key={tab}
               text={tab}
-              selectedItem={selectedItem}
+              selectedItem={selectedNavBarItem}
               handleItemClick={handleItemClick}
             />
           ))}
-        </ul>
+        </div>
       </nav>
     </header>
   );
